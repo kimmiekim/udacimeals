@@ -21,7 +21,7 @@ class App extends Component {
 //so react and work with the array of data
 //with redux, it's more natural to have data structure in obj format
 
-function mapStateToProps(calendar) {
+function mapStateToProps({calendar, food}) {
   const dayOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 
   return {
@@ -31,7 +31,7 @@ function mapStateToProps(calendar) {
       day,
       meals: Object.keys(calendar[day]).reduce((meals, meal) => {
         meals[meal] = calendar[day][meal]
-          ? calendar[day][meal]
+          ? food[calendar[day][meal]]
           : null
         console.log("reduced meals to:", meals);
         return meals
