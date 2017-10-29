@@ -63,6 +63,12 @@ class App extends Component {
     }, [])
     .reduce((ings, { ingredientLines }) => ings.concat(ingredientLines), [])
   }
+  _handleKeyPress = event => {
+    if (event.key == 'Enter') {
+      event.target.value.searchFood
+    }
+  };
+
   render() {
     const { foodModalOpen, loadingFood, food, ingredientsModalOpen } = this.state
     const { calendar, selectRecipe, remove } = this.props
@@ -133,6 +139,7 @@ class App extends Component {
                       type='text'
                       placeholder='Search Foods'
                       ref={(input) => this.input = input}
+                      onKeyPress={ this._handleKeyPress }
                     />
                     <button
                       className='icon-btn'
